@@ -42,17 +42,24 @@ router.post("/convert", async (req, res) => {
 
   //👇🏻 向 ChatGPT 提问
   const prompt = `Convert the JSON object into Typescript interfaces \n ${value} Please, I need the only the code, I don't need any explanations.`;
-
-  const completion = await openai.createChatCompletion({
+  try {
+    const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
-  });
-
-
-  res.json({
+    });
+  } catch (e) {
+    res.json({
       message: "Successful",
-      response: completion.data.choices[0].message.content,
-  });
+      response: JSON.stringify(e),
+    });
+  }
+  
+
+
+  // res.json({
+  //     message: "Successful",
+  //     response: completion.data.choices[0].message.content,
+  // });
 });
 
 router.post("/comments", async (req, res) => {
