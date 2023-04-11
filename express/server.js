@@ -11,7 +11,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // 设置key
 dotenv.config()
-const GPT_API_KEY = process.env.GPT_API_KEY
+const GPT_API_KEY = "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" // process.env.GPT_API_KEY
 if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
