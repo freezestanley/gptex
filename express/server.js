@@ -16,7 +16,7 @@ if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
 const configuration = new Configuration({
-  apiKey: GPT_API_KEY,
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
-router.post('/test', (req, res) => 'this is test');
+router.post('/test', (req, res) => res.json({ value: 'this is test' }));
 
 router.post("/convert", async (req, res) => {
   //👇🏻 解构 JSON 对象
