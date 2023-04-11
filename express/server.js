@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
-
+router.post('/test', (req, res) => 'this is test');
 
 router.post("/convert", async (req, res) => {
   //👇🏻 解构 JSON 对象
