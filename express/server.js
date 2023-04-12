@@ -11,12 +11,12 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // 设置key
 dotenv.config()
-const GPT_API_KEY = "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" // process.env.GPT_API_KEY
+const GPT_API_KEY = "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" // process.env.GPT_API_KEY
 if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
 const configuration = new Configuration({
-  apiKey: "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"
+  apiKey: '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'
 });
 
 const openai = new OpenAIApi(configuration);
