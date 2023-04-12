@@ -118,5 +118,24 @@ router.post("/mock", async (req, res) => {
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
+app.post("/cv", async (req, res) => {
+  //👇🏻 解构 JSON 对象
+  let { value } = req.body;
+
+  //👇🏻 向 ChatGPT 提问
+  const prompt = `Convert the JSON object into Typescript interfaces \n ${value} Please, I need the only the code, I don't need any explanations.`;
+
+  const completion = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: prompt }],
+  });
+
+
+  res.json({
+      message: "Successful",
+      response: completion.data.choices[0].message.content,
+  });
+});
+
 module.exports = app;
 module.exports.handler = serverless(app);
