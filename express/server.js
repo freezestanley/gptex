@@ -11,14 +11,14 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // 设置key
 dotenv.config()
-const GPT_API_KEY = "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" // process.env.GPT_API_KEY
+const GPT_API_KEY = "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" // process.env.GPT_API_KEY
 if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
+
 const configuration = new Configuration({
   apiKey: GPT_API_KEY
 });
-
 const openai = new OpenAIApi(configuration);
 
 app.use(express.urlencoded({ extended: true }));
@@ -48,9 +48,15 @@ router.post("/convert", async (req, res) => {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
+
+    res.json({
+        message: "Successful",
+        response: completion.data.choices[0].message.content,
+    });
+
   } catch (e) {
     res.json({
-      message: "Successful",
+      message: "error",
       response: JSON.stringify(e),
     });
   }
