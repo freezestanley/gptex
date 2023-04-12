@@ -16,7 +16,7 @@ if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -43,7 +43,8 @@ router.post("/convert", async (req, res) => {
   // 👇🏻 向 ChatGPT 提问
   const prompt = `Convert the JSON object into Typescript interfaces \n ${value} Please, I need the only the code, I don't need any explanations.`;
   try {
-    const completion = await openai.createChatCompletion({
+    const completion = await 
+    \({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
