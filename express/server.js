@@ -16,8 +16,9 @@ if (!GPT_API_KEY) {
     console.log("请配置 ChatGPT API Key")
 }
 const configuration = new Configuration({
-  apiKey: GPT_API_KEY
+  apiKey: "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"
 });
+
 const openai = new OpenAIApi(configuration);
 
 app.use(express.urlencoded({ extended: true }));
